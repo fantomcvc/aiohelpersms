@@ -76,6 +76,9 @@ class HelperSMS:
 				]
 			}
 		"""
+		if not isinstance(country_id, int):
+			raise HelperSMSError("Argument country_id must be an integer")
+
 		method = "GET"
 		path = f"/api/services/{country_id}"
 		return await self._request(method, path)
@@ -96,12 +99,14 @@ class HelperSMS:
 				]
 			}
 		"""
+		if not isinstance(country_id, int):
+			raise HelperSMSError("Argument country_id must be an integer")
+
 		method = "GET"
 		path = f"/api/operators/{country_id}"
 		return await self._request(method, path)
 
 	
-	@validate_arguments
 	async def get_price(
 		self,
 		service_id: int,
@@ -121,6 +126,11 @@ class HelperSMS:
 				}
 			}
 		"""
+		if not isinstance(service_id, int):
+			raise HelperSMSError("Argument service_id must be an integer")
+		if not isinstance(reorder_ability, bool):
+			raise HelperSMSError("Argument reorder_ability must be an boolean")
+
 		method = "GET"
 		path = f"/api/price/{service_id}"
 		data = {
@@ -134,7 +144,7 @@ class HelperSMS:
 		return await self._request(method, path, data)
 
 
-	@validate_arguments
+
 	async def get_number(
 		self,
 		service_id: int,
@@ -160,6 +170,15 @@ class HelperSMS:
 				}
 			}
 		"""
+		if not isinstance(service_id, int):
+			raise HelperSMSError("Argument service_id must be an integer")
+		if not isinstance(operator_code, str):
+			raise HelperSMSError("Argument operator_code must be an string")
+		if not isinstance(reorder_ability, bool):
+			raise HelperSMSError("Argument reorder_ability must be an boolean")
+		if not isinstance(max_price, int):
+			raise HelperSMSError("Argument max_price must be an integer")
+
 		method = "POST"
 		path = f"/api/number"
 		data = {
@@ -175,7 +194,7 @@ class HelperSMS:
 		return await self._request(method, path, data)
 
 
-	@validate_arguments
+	
 	async def set_order_status(
 		self,
 		order_id: int,
@@ -190,6 +209,11 @@ class HelperSMS:
 				"status": true
 			}
 		"""
+		if not isinstance(order_id, int):
+			raise HelperSMSError("Argument order_id must be an integer")
+		if not isinstance(status, str):
+			raise HelperSMSError("Argument status must be an string")
+
 		method = "POST"
 		path = "/api/order_status"
 		data = {
@@ -203,7 +227,7 @@ class HelperSMS:
 		return await self._request(method, path, data)
 
 
-	@validate_arguments
+
 	async def get_codes(
 		self,
 		order_id: int,
@@ -225,13 +249,16 @@ class HelperSMS:
 				}
 			}
 		"""
+		if not isinstance(order_id, int):
+			raise HelperSMSError("Argument order_id must be an integer")
+
 		method = "GET"
 		path = f"/api/codes/{order_id}"
 
 		return await self._request(method, path)
 	
 
-	@validate_arguments
+
 	async def get_rent_services(
 		self,
 		country_id: int,
@@ -251,13 +278,16 @@ class HelperSMS:
 				]
 			}
 		"""
+		if not isinstance(country_id, int):
+			raise HelperSMSError("Argument country_id must be an integer")
+
 		method = "GET"
 		path = f"/api/rent_services/{country_id}"
 
 		return await self._request(method, path)
 
 
-	@validate_arguments
+
 	async def get_rent_price(
 		self,
 		service_id : int,
@@ -277,13 +307,18 @@ class HelperSMS:
 				}
 			}
 		"""
+		if not isinstance(service_id, int):
+			raise HelperSMSError("Argument service_id must be an integer")
+		if not isinstance(rent_time, int):
+			raise HelperSMSError("Argument rent_time must be an integer")
+
 		method = "GET"
 		path = f"/api/rent_price/{service_id}/{rent_time}"
 
 		return await self._request(method, path)
 
 
-	@validate_arguments
+
 	async def get_rent_number(
 		self,
 		service_id : int,
@@ -307,6 +342,13 @@ class HelperSMS:
 				}
 			}
 		"""
+		if not isinstance(service_id, int):
+			raise HelperSMSError("Argument service_id must be an integer")
+		if not isinstance(rent_time, int):
+			raise HelperSMSError("Argument rent_time must be an integer")
+		if not isinstance(operator_code, str):
+			raise HelperSMSError("Argument operator_code must be an string")
+
 		method = "POST"
 		path = "/api/rent_number"
 		data = {
