@@ -110,7 +110,7 @@ class HelperSMS:
 		"""Получить цену СМС для сервиса
 		Args:
 			service_id (int): Айди сервиса
-			reorder_ability (Optional[bool], optional): Возможность переупорядочивания. Default value: false
+			reorder_ability (Optional[bool], optional): Возможность повторной покупки номера после конца аренды. Default value: false
 		Returns:
 			Dict: {
 				"status": true,
@@ -146,7 +146,7 @@ class HelperSMS:
 		Args:
 			service_id (int): Айди сервиса
 			operator_code: (Optional[str], optional): Код оператора. Default value: any
-			reorder_ability (Optional[bool], optional): Возможность переупорядочивания. Default value: false
+			reorder_ability (Optional[bool], optional): Возможность повторной покупки номера после конца аренды. Default value: false
 			max_price (Optional[int], optional): Максимальная цена. Default value: 0
 		Returns:
 			Dict: {
