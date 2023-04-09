@@ -1,6 +1,6 @@
 
 ## Quickstart
-1. Copy `aiohelpersms/` folder into your project or `pip install git+https://github.com/fantomcvc/aiohelpersms.git`
+1. Copy `aiohelpersms/` folder into your project or `pip install aiohelpersms`
 2. Install dependencies `pip install -r aiohelpersms/requirements.txt/`
 3. See examples
 4. Read the [documentation](https://api.helper20sms.ru/docs)
