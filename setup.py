@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
 	name="aiohelpersms",
-	version='0.1.1',
+	version='0.1.2',
 	url="https://github.com/fantomcvc/aiohelpersms",
 	license="MIT License",
 	author="fantomcvc",
