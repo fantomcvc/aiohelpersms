@@ -2,8 +2,8 @@ import asyncio
 import aiohttp
 import platform
 
-from typing import Dict, List, Optional
-from pydantic import validate_arguments, HttpUrl
+from typing import Dict, Optional
+
 
 if platform.system() == "Windows":
 	asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
@@ -22,7 +22,10 @@ class HelperSMS:
 		Args:
 			api_key (str): HelperSMS api key
 		"""
-		self.api_key = api_key
+		
+		self.__headers = {
+			"api-key": api_key,
+		}
 	
 	
 	async def get_balance(self) -> Dict:
@@ -180,7 +183,7 @@ class HelperSMS:
 			raise HelperSMSError("Argument max_price must be an integer")
 
 		method = "POST"
-		path = f"/api/number"
+		path = "/api/number"
 		data = {
 			'service_id': service_id,
 			'operator_code': operator_code,
@@ -362,7 +365,7 @@ class HelperSMS:
 
 		return await self._request(method, path, data)
 
-	async def _request(self, method, path, data={}) -> Dict:
+	async def _request(self, method: str, path: str, data: dict = {}) -> Dict:
 		url = self.path_prefix + path
 		headers = {
 			"api-key": self.api_key,
@@ -370,9 +373,9 @@ class HelperSMS:
 
 		async with aiohttp.ClientSession() as session:
 			async with session.request(
-				method, url, headers=headers, json=data
-			) as responce:
-				result = await responce.json()
+				method, url, headers=self.__headers, json=data
+			) as response:
+				result = await response.json()
 				if isinstance(result, dict) and 'detail' in result:
 					raise HelperSMSError(result)
 				else:
