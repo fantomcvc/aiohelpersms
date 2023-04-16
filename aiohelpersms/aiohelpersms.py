@@ -366,10 +366,7 @@ class HelperSMS:
 		return await self._request(method, path, data)
 
 	async def _request(self, method: str, path: str, data: dict = {}) -> Dict:
-		url = self.path_prefix + path
-		headers = {
-			"api-key": self.api_key,
-		}		
+		url = self.path_prefix + path	
 
 		async with aiohttp.ClientSession() as session:
 			async with session.request(
