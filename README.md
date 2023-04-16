@@ -1,7 +1,7 @@
 
 ## Quickstart
 1. Install package `pip install aiohelpersms`
-2. Install dependencies `pip install -r aiohelpersms/requirements.txt/`
+2. Install dependencies `pip install -r aiohelpersms/requirements.txt`
 3. See examples
 4. Read the [documentation](https://api.helper20sms.ru/docs)
 
