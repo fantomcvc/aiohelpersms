@@ -32,6 +32,10 @@ except HelperSMSError as e:
 ```
 `> {'detail': 'Bad API key provided'}`
 
+## Other
+
+[![Downloads](https://static.pepy.tech/badge/aiohelpersms)](https://pepy.tech/project/aiohelpersms)
+
 ## License
 
 Project Aioantipublic is distributed under the MIT license
