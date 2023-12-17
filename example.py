@@ -1,10 +1,10 @@
 import asyncio
-from aiohelpersms import HelperSMS, HelperSMSError
+from aiohelpersms import AioHelperSMS, BadApiKeyProvidedException
 
 token = 'your_api_token'
 
 async def main(token):
-	client = HelperSMS(token)
+	client = AioHelperSMS(token)
 
 	try:
 		balance = await client.get_balance()
@@ -13,7 +13,7 @@ async def main(token):
 		countries = await client.get_countries()
 		print(countries)
 
-	except HelperSMSError as e:
+	except BadApiKeyProvidedException as e:
 		print(e)
 
 
